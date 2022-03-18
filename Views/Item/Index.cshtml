@@ -1,0 +1,42 @@
+﻿@model List<ItemDTO>
+
+<a asp-action="Create">
+    <button type="button" class="btn btn-success">Create</button>
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Type</th>
+            <th scope="col">Quantity Available</th>
+            <th scope="col">Creator</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.Type</td>
+            <td>@item.QuantityAvailable</td>
+            <td>@item.CreatedBy</td>
+            @if (User.Identity.Name == item.UserEmail)
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">
+                        <button type="button" class="btn btn-warning">Edit</button>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
