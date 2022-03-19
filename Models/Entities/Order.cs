@@ -14,6 +14,10 @@ namespace Jewellery_Shop.Models.Entities
         
         [ForeignKey("User")]
         public int UserId {get; set;}
+
+        [ForeignKey("Cart")]
+        public string CardId { get; set; }
+
         public decimal FullPrice { get; set; }
     }
 }

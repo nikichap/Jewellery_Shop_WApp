@@ -1,0 +1,37 @@
+﻿@model List<CartDTO>
+
+<a asp-action="Create">
+    <button type="button" class="btn btn-success">Create</button>
+</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Item</th>
+            <th scope="col">Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cart in Model)
+        {
+            <tr>
+                <th scope="row">@cart.Id</th>
+                <td>@cart.Item</td>
+                <td>@cart.Item</td>
+                <td>@cart.Quantity</td>
+                @if (User.Identity.Name == cart.CreatedBy)
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@cart.Id">
+                            <button type="button" class="btn btn-warning">Edit</button>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@cart.Id">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
