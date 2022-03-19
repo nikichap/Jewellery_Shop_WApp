@@ -11,6 +11,7 @@ namespace Jewellery_Shop.Models.DTOs
         public int Id { get; set; }
         public Item Item { get; set; }
         public int Quantity { get; set; }
+        public string CreatedBy { get; set; }
 
     }
 }

@@ -13,6 +13,8 @@ namespace Jewellery_Shop.Models.Entities
 
         [ForeignKey("Item")]
         public int ItemId { get; set; }
+        [ForeignKey("User")]
+        public int UserId { get; set; }
         public int Quantity { get; set; }
     }
 }
