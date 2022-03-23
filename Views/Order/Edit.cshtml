@@ -1,0 +1,35 @@
+﻿@model OrderDTO
+
+<h1>Edit Cart</h1>
+
+<form asp-action="Edit">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" placeholder="Enter name" name="name" value="@Model.Id">
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" placeholder="Enter price" name="price" value="@Model.Item">
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" placeholder="Enter price" name="price" value="@Model.Quantity">
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" placeholder="Enter price" name="price" value="@Model.CreatedBy">
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" placeholder="Enter price" name="price" value="@Model.OrderedOn">
+    </div>
+    <div class="form-group">
+        <label>Price</label>
+        <input type="number" class="form-control" placeholder="Enter price" name="price" value="@Model.FullPrice">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Edit</button>
+    <a asp-action="Index">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </a>
+</form>

@@ -1,4 +1,4 @@
-﻿@model Cart
+﻿@model Favourites
 
 <h1>Edit Cart</h1>
 
@@ -6,10 +6,6 @@
     <div class="form-group">
         <label>Name</label>
         <input type="text" class="form-control" placeholder="Enter name" name="name" value="@Model.Item">
-    </div>
-    <div class="form-group">
-        <label>Price</label>
-        <input type="number" class="form-control" placeholder="Enter price" name="price" value="@Model.Quantity">
     </div>
     <button type="submit" class="btn btn-primary">Edit</button>
     <a asp-action="Index">
