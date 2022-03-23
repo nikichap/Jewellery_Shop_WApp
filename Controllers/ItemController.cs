@@ -52,6 +52,7 @@ namespace Jewellery_Shop.Controllers
             Item item = itemService.GetById(id);
             return View(item);
         }
+
         [HttpPost]
         public IActionResult DeleteConfirm(int id)
         {
