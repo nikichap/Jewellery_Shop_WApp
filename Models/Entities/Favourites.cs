@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Jewellery_Shop.Models.Entities
 {
-    public class Cart
+    public class Favourites
     {
         public int Id { get; set; }
         public Item Item { get; set; }
@@ -15,6 +15,7 @@ namespace Jewellery_Shop.Models.Entities
         public int ItemId { get; set; }
         [ForeignKey("User")]
         public int UserId { get; set; }
-        public int Quantity { get; set; }
+        public User User { get; set; }
+        
     }
 }

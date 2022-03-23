@@ -12,6 +12,8 @@ namespace Jewellery_Shop.Models
     public class JewelleryShopDbContext : IdentityDbContext<User, IdentityRole<int>, int>
     {
         public DbSet<Item> Items { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Favourites> Favourites { get; set; }
 
         public JewelleryShopDbContext(DbContextOptions options) : base(options)
         {

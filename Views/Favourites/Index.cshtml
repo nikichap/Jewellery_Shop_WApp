@@ -1,4 +1,4 @@
-﻿@model List<CartDTO>
+﻿@model List<FavouritesDTO>
 
 <a asp-action="Create">
     <button type="button" class="btn btn-success">Create</button>
@@ -13,20 +13,18 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var cart in Model)
+        @foreach (var favourites in Model)
         {
             <tr>
-                <th scope="row">@cart.Id</th>
-                <td>@cart.Item</td>
-                <td>@cart.Item</td>
-                <td>@cart.Quantity</td>
-                @if (User.Identity.Name == cart.CreatedBy)
+                <th scope="row">@favourites.Id</th>
+                <td>@favourites.Item</td>
+                @if (User.Identity.Name == favourites.CreatedBy)
                 {
                     <td>
-                        <a asp-action="Edit" asp-route-id="@cart.Id">
+                        <a asp-action="Edit" asp-route-id="@favourites.Id">
                             <button type="button" class="btn btn-warning">Edit</button>
                         </a>
-                        <a asp-action="Delete" asp-route-id="@cart.Id">
+                        <a asp-action="Delete" asp-route-id="@favourites.Id">
                             <button type="button" class="btn btn-danger">Delete</button>
                         </a>
                     </td>
