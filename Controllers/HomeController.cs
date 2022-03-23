@@ -23,7 +23,7 @@ namespace Jewellery_Shop.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Sources()
         {
             return View();
         }

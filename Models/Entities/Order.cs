@@ -16,7 +16,7 @@ namespace Jewellery_Shop.Models.Entities
         public int UserId {get; set;}
 
         [ForeignKey("Cart")]
-        public string CardId { get; set; }
+        public string CartId { get; set; }
 
         public decimal FullPrice { get; set; }
     }
