@@ -27,16 +27,16 @@ namespace Jewellery_Shop
             services.AddControllersWithViews();
             services.AddDbContext<JewelleryShopDbContext>(options =>
             {
-                options.UseMySQL("Server=localhost;Database=jewellery_shop_db;Uid=root;Pwd=Zahara2004;");
+                options.UseMySQL("Server=localhost;Database=jewellery_shop_db;Uid=root;Pwd=1234;");
             });
             services.AddIdentity<User, IdentityRole<int>>(options =>
             {
-                options.User.RequireUniqueEmail = false;
-                options.Password.RequireDigit = false;
-                options.Password.RequireLowercase = false;
-                options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequireUppercase = false;
-                options.Password.RequiredLength = 1;
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequiredLength = 5;
 
             })
                 .AddEntityFrameworkStores<JewelleryShopDbContext>()

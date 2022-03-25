@@ -48,6 +48,7 @@ namespace Jewellery_Shop.Services
             dbItem.Id = item.Id;
             dbItem.Type = item.Type;
             dbItem.QuantityAvailable = item.QuantityAvailable;
+            dbItem.Link=item.Link;
 
             dbContext.SaveChanges();
         }
@@ -68,7 +69,9 @@ namespace Jewellery_Shop.Services
             itemDTO.Price = item.Price;
             itemDTO.Type = item.Type;
             itemDTO.QuantityAvailable = item.QuantityAvailable;
+            itemDTO.Link=item.Link;
             itemDTO.CreatedBy = $"{item.User.FirstName} {item.User.LastName}";
+            itemDTO.UserEmail = item.User.Email;
 
             return itemDTO;
         }
