@@ -13,6 +13,7 @@ namespace Jewellery_Shop.Models.DTOs
         public string Type { get; set; }
         public int QuantityAvailable { get; set; }
         public string CreatedBy { get; set; }
+       public string Link { get; set;}
         public string UserEmail { get; set; }
     }
 }
