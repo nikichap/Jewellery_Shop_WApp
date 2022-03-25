@@ -46,6 +46,7 @@ namespace Jewellery_Shop.Services
             dbItem.Name = item.Name;
             dbItem.Price = item.Price;
             dbItem.Id = item.Id;
+            dbItem.Type = item.Type;
             dbItem.QuantityAvailable = item.QuantityAvailable;
 
             dbContext.SaveChanges();

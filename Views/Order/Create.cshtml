@@ -1,16 +1,29 @@
-﻿ <h1>Create Oder</h1>
+﻿<h1>Create Oder</h1>
 
-    <form asp-action="Create">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" placeholder="Enter name of the item" name="name">
-        </div>
-        <div class="form-group">
-            <label>Price</label>
-            <input type="number" class="form-control" placeholder="Enter price" name="price">
-        </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-        <a asp-action="Index">
-            <button type="button" class="btn btn-secondary">Cancel</button>
-        </a>
-    </form>
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Item</label>
+        <input type="text" class="form-control" placeholder="Enter item" name="item">
+    </div>
+    <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" class="form-control" placeholder="Enter quantity" name="quantity">
+    </div>
+    <div class="form-group">
+        <label>Created by</label>
+        <input type="text" class="form-control" placeholder="Enter the creator" name="createdBy">
+    </div>
+    <div class="form-group">
+        <label>Ordered on</label>
+        <input type="datetime" class="form-control" placeholder="Enter the time of the order" name="orderedOn">
+    </div>
+    <div class="form-group">
+        <label>Full price</label>
+        <input type="number" class="form-control" placeholder="Enter full price" name="fullPrice">
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </a>
+</form>
