@@ -44,6 +44,7 @@ namespace Jewellery_Shop
 
             // Services
             services.AddScoped<ItemService>();
+            services.AddScoped<FavouritesService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

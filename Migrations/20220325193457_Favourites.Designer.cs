@@ -3,14 +3,16 @@ using System;
 using Jewellery_Shop.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Jewellery_Shop.Migrations
 {
     [DbContext(typeof(JewelleryShopDbContext))]
-    partial class JewelleryShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220325193457_Favourites")]
+    partial class Favourites
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,7 +25,7 @@ namespace Jewellery_Shop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int?>("ItemId")
+                    b.Property<int>("ItemId")
                         .HasColumnType("int");
 
                     b.Property<int>("UserId")
@@ -44,11 +46,11 @@ namespace Jewellery_Shop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("Link")
                         .HasColumnType("text");
 
-                    b.Property<DateTime>("OrderDate")
-                        .HasColumnType("datetime");
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18, 2)");
@@ -304,7 +306,9 @@ namespace Jewellery_Shop.Migrations
                 {
                     b.HasOne("Jewellery_Shop.Models.Entities.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("ItemId");
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Jewellery_Shop.Models.Entities.User", "User")
                         .WithMany()
