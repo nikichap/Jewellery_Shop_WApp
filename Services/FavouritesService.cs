@@ -21,16 +21,16 @@ namespace Jewellery_Shop.Services
         public List<FavouritesDTO> GetAll()
         {
             return dbContext.Favourites
-                .Include(Favourites => Favourites.UserId)
+                .Include(Favourites => Favourites.User)
                 .Select(Favourites => ToDto(Favourites))
                 .ToList();
         }
 
-        public void Create(Favourites Favourites, User user)
+        public void Create(Favourites favourites, User user)
         {
-            Favourites.User = user;
+            favourites.User = user;
 
-            dbContext.Favourites.Add(Favourites);
+            dbContext.Favourites.Add(favourites);
             dbContext.SaveChanges();
         }
 
@@ -46,7 +46,8 @@ namespace Jewellery_Shop.Services
             dbFavourites.Id = Favourites.Id;
             dbFavourites.Item = Favourites.Item;
             dbFavourites.User = Favourites.User;
-            dbFavourites.ItemId = Favourites.ItemId;
+            //dbFavourites.ItemId = Favourites.ItemId;
+
 
             dbContext.SaveChanges();
         }
@@ -58,13 +59,15 @@ namespace Jewellery_Shop.Services
             dbContext.SaveChanges();
         }
 
-        private static FavouritesDTO ToDto(Favourites Favourites)
+        private static FavouritesDTO ToDto(Favourites favourites)
         {
             FavouritesDTO FavouritesDTO = new FavouritesDTO();
 
-            FavouritesDTO.Id = Favourites.Id;
-            FavouritesDTO.Item = Favourites.Item;
-            FavouritesDTO.CreatedBy = $"{Favourites.User.FirstName} {Favourites.User.LastName}";
+            FavouritesDTO.Id = favourites.Id;
+            FavouritesDTO.Item = favourites.Item;
+            //FavouritesDTO.ItemId = favourites.ItemId;
+            FavouritesDTO.CreatedBy = $"{favourites.User.FirstName} {favourites.User.LastName}";
+            FavouritesDTO.UserEmail = favourites.User.Email;
 
             return FavouritesDTO;
         }
