@@ -37,14 +37,12 @@ namespace Jewellery_Shop.Controllers
         {
             User user = await userManager.GetUserAsync(User).ConfigureAwait(false);
             itemService.Create(item, user);
-
             return RedirectToAction(nameof(Index));
         }
         
         public IActionResult Edit(int id)
         {
             Item item = itemService.GetById(id);
-
             return View(item);
         }
 
@@ -52,6 +50,7 @@ namespace Jewellery_Shop.Controllers
         public IActionResult Edit(Item item)
         {
             itemService.Edit(item);
+            
             return RedirectToAction(nameof(Index));
         }
         public IActionResult Delete(int id)
