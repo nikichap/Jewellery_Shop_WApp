@@ -1,12 +1,21 @@
-﻿ <h1>Create Favourites List</h1>
+﻿<h1>Create Favourites List</h1>
 
-    <form asp-action="Create">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control" placeholder="Enter name of the item" name="name">
-        </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-        <a asp-action="Index">
-            <button type="button" class="btn btn-secondary">Cancel</button>
-        </a>
-    </form>
+<form asp-action="Create">
+    <div class="form-group">
+        <label>Item</label>
+        <input type="text" class="form-control" placeholder="Enter item" name="item">
+    </div>
+    @*<div class="form-group">
+        <label>ItemId</label>
+        <input type="number" class="form-control" placeholder="Enter item id" name="itemId">
+    </div>
+    <div class="form-group">
+        <label>Created By</label>
+        <input type="text" class="form-control" placeholder="Enter username" name="user">
+    </div>*@
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index">
+        <button type="button" class="btn btn-secondary">Cancel</button>
+    </a>
+</form>

@@ -70,6 +70,7 @@ namespace Jewellery_Shop.Services
             OrderDTO.FullPrice = Order.Price;
             OrderDTO.CreatedBy = $"{Order.User.FirstName} {Order.User.LastName}";
 
+
             return OrderDTO;
         }
     }
