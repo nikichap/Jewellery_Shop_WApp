@@ -3,14 +3,17 @@ using System;
 using Jewellery_Shop.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
 
 namespace Jewellery_Shop.Migrations
 {
     [DbContext(typeof(JewelleryShopDbContext))]
-    partial class JewelleryShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220325220012_OrderTest")]
+    partial class OrderTest
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -76,6 +79,9 @@ namespace Jewellery_Shop.Migrations
                     b.Property<string>("ChoosenItem")
                         .HasColumnType("text");
 
+                    b.Property<decimal>("FullPrice")
+                        .HasColumnType("decimal(18, 2)");
+
                     b.Property<int>("IdItem")
                         .HasColumnType("int");
 
@@ -85,12 +91,15 @@ namespace Jewellery_Shop.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
+                    b.Property<int>("QuantityAvailable")
+                        .HasColumnType("int");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdItem");
+                    b.HasIndex("QuantityAvailable");
 
                     b.HasIndex("UserId");
 
@@ -320,7 +329,7 @@ namespace Jewellery_Shop.Migrations
                 {
                     b.HasOne("Jewellery_Shop.Models.Entities.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("IdItem")
+                        .HasForeignKey("QuantityAvailable")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

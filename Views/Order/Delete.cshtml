@@ -16,12 +16,12 @@
         </div>
         <div class="form-group">
             <label>OrderedOn</label>
-            <input type="datetime" class="form-control" value="@Model.OrderedOn" disabled>
+            <input type="datetime" class="form-control" value="@Model.OrderedFor" disabled>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             <label>FullPrice</label>
             <input type="number" class="form-control" value="@Model.FullPrice" disabled>
-        </div>
+        </div>*@
         <button type="submit" class="btn btn-primary">Delete</button>
         <a asp-action="Index">
             <button type="button" class="btn btn-secondary">Cancel</button>

@@ -44,12 +44,16 @@ namespace Jewellery_Shop.Services
             Order dbOrder = GetById(Order.Id);
 
             dbOrder.Id = Order.Id;
-            dbOrder.QuantityAvailable = Order.QuantityAvailable;
+            dbOrder.ChoosenItem = Order.ChoosenItem;
+            dbOrder.Quantity = Order.Quantity;
+            dbOrder.OrderDate = Order.OrderDate;
+            dbOrder.OrderDate = Order.OrderDate;
+            //dbOrder.FullPrice = Order.FullPrice;
+            //dbOrder.QuantityAvailable = Order.QuantityAvailable;
+            dbOrder.IdItem = Order.IdItem;
             dbOrder.User = Order.User;
             dbOrder.UserId = Order.UserId;
-            dbOrder.OrderDate = Order.OrderDate;
-            dbOrder.Price = Order.Price;
-            
+            dbOrder.Item = Order.Item;
 
             dbContext.SaveChanges();
         }
@@ -66,10 +70,11 @@ namespace Jewellery_Shop.Services
             OrderDTO OrderDTO = new OrderDTO();
 
             OrderDTO.Id = Order.Id;
-            OrderDTO.OrderedOn = Order.OrderDate;
-            OrderDTO.FullPrice = Order.Price;
+            OrderDTO.Item = Order.ChoosenItem;
+            //OrderDTO.Quantity = Order.QuantityAvailable;
+            OrderDTO.OrderedFor = Order.OrderDate;
+           // OrderDTO.FullPrice = Order.FullPrice;
             OrderDTO.CreatedBy = $"{Order.User.FirstName} {Order.User.LastName}";
-
 
             return OrderDTO;
         }
