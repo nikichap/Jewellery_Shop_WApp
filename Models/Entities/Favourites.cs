@@ -9,11 +9,7 @@ namespace Jewellery_Shop.Models.Entities
     public class Favourites
     {
         public int Id { get; set; }
-        public Item Item { get; set; }
-
-
-        //[ForeignKey("Item")]
-        //public int ItemId { get; set; }
+        public string Item { get; set; }
 
         [ForeignKey("User")]
         public int UserId { get; set; }

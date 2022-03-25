@@ -46,7 +46,6 @@ namespace Jewellery_Shop.Services
             dbFavourites.Id = Favourites.Id;
             dbFavourites.Item = Favourites.Item;
             dbFavourites.User = Favourites.User;
-            //dbFavourites.ItemId = Favourites.ItemId;
 
 
             dbContext.SaveChanges();
@@ -65,7 +64,6 @@ namespace Jewellery_Shop.Services
 
             FavouritesDTO.Id = favourites.Id;
             FavouritesDTO.Item = favourites.Item;
-            //FavouritesDTO.ItemId = favourites.ItemId;
             FavouritesDTO.CreatedBy = $"{favourites.User.FirstName} {favourites.User.LastName}";
             FavouritesDTO.UserEmail = favourites.User.Email;
 
