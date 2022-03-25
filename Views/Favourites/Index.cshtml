@@ -9,7 +9,6 @@
         <tr>
             <th scope="col">Id</th>
             <th scope="col">Item</th>
-            <th scope="col">CreatedBy</th>
         </tr>
     </thead>
     <tbody>
@@ -17,9 +16,7 @@
         {
         <tr>
             <th scope="row">@favourites.Id</th>
-            <td>@favourites.Item</td>
-            @*<td>@favourites.ItemId</td>*@
-            <td>@favourites.CreatedBy</td>
+            <td>@favourites.Item</td>>
             @if (User.Identity.Name == favourites.UserEmail)
             {
                 <td>
@@ -29,6 +26,14 @@
                     <a asp-action="Delete" asp-route-id="@favourites.Id">
                         <button type="button" class="btn btn-danger">Delete</button>
                     </a>
+                </td>
+            }
+            else
+            {
+                <td>
+                    <div class="alert alert-danger" role="alert">
+                        You cannot edit or delete favourites, because they were created by another user!
+                    </div>
                 </td>
             }
         </tr>

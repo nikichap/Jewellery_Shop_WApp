@@ -3,14 +3,16 @@ using System;
 using Jewellery_Shop.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Jewellery_Shop.Migrations
 {
     [DbContext(typeof(JewelleryShopDbContext))]
-    partial class JewelleryShopDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220325202231_RemovedItemId")]
+    partial class RemovedItemId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,13 +25,15 @@ namespace Jewellery_Shop.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("Item")
-                        .HasColumnType("text");
+                    b.Property<int?>("ItemId")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
 
                     b.HasIndex("UserId");
 
@@ -300,11 +304,17 @@ namespace Jewellery_Shop.Migrations
 
             modelBuilder.Entity("Jewellery_Shop.Models.Entities.Favourites", b =>
                 {
+                    b.HasOne("Jewellery_Shop.Models.Entities.Item", "Item")
+                        .WithMany()
+                        .HasForeignKey("ItemId");
+
                     b.HasOne("Jewellery_Shop.Models.Entities.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Item");
 
                     b.Navigation("User");
                 });
