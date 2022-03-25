@@ -25,8 +25,8 @@
             <td>@item.Type</td>
             <td>@item.QuantityAvailable</td>
             <td>@item.CreatedBy</td>
-            @if (User.Identity.Name == item.UserEmail)
-            {
+            @*@if (User.Identity.Name == item.UserEmail)
+            {*@
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.Id">
                         <button type="button" class="btn btn-warning">Edit</button>
@@ -35,7 +35,7 @@
                         <button type="button" class="btn btn-danger">Delete</button>
                     </a>
                 </td>
-            }
+            @*}*@
         </tr>
         }
     </tbody>

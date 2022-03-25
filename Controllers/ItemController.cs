@@ -27,7 +27,7 @@ namespace Jewellery_Shop.Controllers
             return View(items);
         }
 
-        public IActionResult Create ()
+        public IActionResult Create()
         {
             return View();
         }
@@ -40,12 +40,19 @@ namespace Jewellery_Shop.Controllers
 
             return RedirectToAction(nameof(Index));
         }
-
+        
         public IActionResult Edit(int id)
         {
             Item item = itemService.GetById(id);
 
             return View(item);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Item item)
+        {
+            itemService.Edit(item);
+            return RedirectToAction(nameof(Index));
         }
         public IActionResult Delete(int id)
         {

@@ -27,7 +27,7 @@ namespace Jewellery_Shop
             services.AddControllersWithViews();
             services.AddDbContext<JewelleryShopDbContext>(options =>
             {
-                options.UseMySQL("Server=localhost;Database=jewellery_shop_db;Uid=root;Pwd=1234;");
+                options.UseMySQL("Server=localhost;Database=jewellery_shop_db;Uid=root;Pwd=Zahara2004;");
             });
             services.AddIdentity<User, IdentityRole<int>>(options =>
             {
@@ -65,6 +65,7 @@ namespace Jewellery_Shop
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseAuthentication();
 
             app.UseEndpoints(endpoints =>
             {
