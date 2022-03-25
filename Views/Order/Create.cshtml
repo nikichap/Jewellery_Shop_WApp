@@ -1,10 +1,20 @@
-﻿<h1>Create Oder</h1>
+﻿<h1>Create Order</h1>
 
+        @*public int Id { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public string Type { get; set; }
+        public int QuantityAvailable { get; set; }
+        public DateTime OrderDate { get; set; }
+        public decimal FullPrice { get; set; }
 
+        [ForeignKey("User")]
+        public int UserId { get; set; }
+        public User User { get; set; }*@
 <form asp-action="Create">
     <div class="form-group">
-        <label>Item</label>
-        <input type="text" class="form-control" placeholder="Enter item" name="item">
+        <label>Name</label>
+        <input type="text" class="form-control" placeholder="Enter name" name="name">
     </div>
     <div class="form-group">
         <label>Quantity</label>
