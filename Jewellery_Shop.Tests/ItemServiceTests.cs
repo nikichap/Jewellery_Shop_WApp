@@ -1,15 +1,18 @@
-using Jewellery_Shop.Models;
+﻿using Jewellery_Shop.Models;
 using Jewellery_Shop.Models.DTOs;
 using Jewellery_Shop.Models.Entities;
 using Jewellery_Shop.Services;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Jewellery_Shop.tests
+namespace Jewellery_Shop.Tests
 {
-    public class FavouritesServiceTests
+    public class ItemServiceTests
     {
         static private ItemService itemService;
         private JewelleryShopDbContext context;
@@ -26,22 +29,22 @@ namespace Jewellery_Shop.tests
         [TearDown]
         public void TearDown()
         {
-        this.context.Database.EnsureDeleted();
+            this.context.Database.EnsureDeleted();
         }
 
         [Test]
         public void TestGetAll()
 
         {
-            Item Item = CreateItem(1, "Item Name");
-            Item Item2 = CreateItem(2, "Item Name 2");
-            Item Item3 = CreateItem(3, "Item Name 3");
+            Item item = CreateItem(1, "Item Name");
+            Item item2 = CreateItem(2, "Item Name 2");
+            Item item3 = CreateItem(3, "Item Name 3");
 
             User user = new User();
             var mc = new ItemService(context);
-            mc.Create(Item, user);
-            mc.Create(Item2, user);
-            mc.Create(Item3, user);
+            mc.Create(item, user);
+            mc.Create(item2, user);
+            mc.Create(item3, user);
 
             List<ItemDTO> ItemDTOs = mc.GetAll();
 
@@ -53,9 +56,9 @@ namespace Jewellery_Shop.tests
         public void TestGetById()
         {
             var mc = new ItemService(context);
-            Item Item = CreateItem(1, "Item Name");
+            Item item = CreateItem(1, "Item Name");
             User user = new User();
-            mc.Create(Item, user);
+            mc.Create(item, user);
 
             Item dbItem = mc.GetById(1);
 
@@ -66,10 +69,10 @@ namespace Jewellery_Shop.tests
         public void TestCreate()
         {
             var mc = new ItemService(context);
-            Item Item = CreateItem(1, "Item Name");
+            Item item = CreateItem(1, "Item Name");
             User user = new User();
 
-            mc.Create(Item, user);
+            mc.Create(item, user);
 
             Item dbItem = context.Items.FirstOrDefault();
 
@@ -81,14 +84,12 @@ namespace Jewellery_Shop.tests
         {
             ItemService postService = new ItemService(this.context);
             var mc = new ItemService(context);
-            Item Item = new Item();
-            Item.Id = 1;
-            Item.Name = "Item Name";
+            Item item = new Item();
+            item.Id = 1;
+            item.Name = "Item Name";
             User user = new User();
 
-           
-
-            mc.Create(Item, user);
+            mc.Create(item, user);
 
             Item editItem = new Item();
 
@@ -108,12 +109,12 @@ namespace Jewellery_Shop.tests
         {
             ItemService postService = new ItemService(this.context);
             var mc = new ItemService(context);
-            Item Item = new Item();
-            Item.Id = 1;
-            Item.Name = "Item Name";
+            Item item = new Item();
+            item.Id = 1;
+            item.Name = "Item Name";
             User user = new User();
 
-            mc.Create(Item, user);
+            mc.Create(item, user);
 
             mc.Delete(1);
 
@@ -123,11 +124,11 @@ namespace Jewellery_Shop.tests
 
         private Item CreateItem(int id, string name)
         {
-            Item Item = new Item();
-            Item.Id = id;
-            Item.Name = name;
+            Item item = new Item();
+            item.Id = id;
+            item.Name = name;
 
-            return Item;
+            return item;
         }
     }
 }
