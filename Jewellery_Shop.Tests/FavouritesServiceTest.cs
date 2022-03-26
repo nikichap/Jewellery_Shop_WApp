@@ -4,12 +4,15 @@ using Jewellery_Shop.Models.Entities;
 using Jewellery_Shop.Services;
 using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Jewellery_Shop.tests
+namespace Jewellery_Shop.Tests
 {
-    class favouritesServiceTest
+    public class FavouritesServiceTest
     {
         static private FavouritesService favouritesService;
         private JewelleryShopDbContext context;
@@ -33,15 +36,15 @@ namespace Jewellery_Shop.tests
         public void TestGetAll()
 
         {
-            Favourites Favourites = CreateFavourites(1, "Favourites Favourites");
-            Favourites Favourites2 = CreateFavourites(2, "Favourites Favourites 2");
-            Favourites Favourites3 = CreateFavourites(3, "Favourites Favourites 3");
+            Favourites favourites = CreateFavourites(1, "Favourites Favourites");
+            Favourites favourites2 = CreateFavourites(2, "Favourites Favourites 2");
+            Favourites favourites3 = CreateFavourites(3, "Favourites Favourites 3");
 
             User user = new User();
             var mc = new FavouritesService(context);
-            mc.Create(Favourites, user);
-            mc.Create(Favourites2, user);
-            mc.Create(Favourites3, user);
+            mc.Create(favourites, user);
+            mc.Create(favourites2, user);
+            mc.Create(favourites3, user);
 
             List<FavouritesDTO> FavouritesDTOs = mc.GetAll();
 
@@ -53,9 +56,9 @@ namespace Jewellery_Shop.tests
         public void TestGetById()
         {
             var mc = new FavouritesService(context);
-            Favourites Favourites = CreateFavourites(1, "Favourites Favourites");
+            Favourites favourites = CreateFavourites(1, "Favourites Favourites");
             User user = new User();
-            mc.Create(Favourites, user);
+            mc.Create(favourites, user);
 
             Favourites dbFavourites = mc.GetById(1);
 
@@ -66,10 +69,10 @@ namespace Jewellery_Shop.tests
         public void TestCreate()
         {
             var mc = new FavouritesService(context);
-            Favourites Favourites = CreateFavourites(1, "Favourites Favourites");
+            Favourites favourites = CreateFavourites(1, "Favourites Favourites");
             User user = new User();
 
-            mc.Create(Favourites, user);
+            mc.Create(favourites, user);
 
             Favourites dbFavourites = context.Favourites.FirstOrDefault();
 
@@ -80,15 +83,12 @@ namespace Jewellery_Shop.tests
         public void TestEdit()
         {
             FavouritesService postService = new FavouritesService(this.context);
-            var mc = new FavouritesService(context);
-            Favourites Favourites = new Favourites();
-            Favourites.Id = 1;
-            Favourites.Item = "Favourites Item";
+            Favourites favourites = new Favourites();
+            favourites.Id = 1;
+            favourites.Item = "Favourites Item";
             User user = new User();
 
-
-
-            mc.Create(Favourites, user);
+            favouritesService.Create(favourites, user);
 
             Favourites editFavourites = new Favourites();
 
@@ -108,12 +108,12 @@ namespace Jewellery_Shop.tests
         {
             FavouritesService postService = new FavouritesService(this.context);
             var mc = new FavouritesService(context);
-            Favourites Favourites = new Favourites();
-            Favourites.Id = 1;
-            Favourites.Item = "Favourites Item";
+            Favourites favourites = new Favourites();
+            favourites.Id = 1;
+            favourites.Item = "Favourites Item";
             User user = new User();
 
-            mc.Create(Favourites, user);
+            mc.Create(favourites, user);
 
             mc.Delete(1);
 
@@ -123,12 +123,11 @@ namespace Jewellery_Shop.tests
 
         private Favourites CreateFavourites(int id, string name)
         {
-            Favourites Favourites = new Favourites();
-            Favourites.Id = id;
-            Favourites. Item = name;
+            Favourites favourites = new Favourites();
+            favourites.Id = id;
+            favourites.Item = name;
 
-            return Favourites;
+            return favourites;
         }
     }
 }
-
